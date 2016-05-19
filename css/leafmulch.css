@@ -1,0 +1,103 @@
+:root {
+	--lightest-value: #FFFFFF; /** plain white **/
+	--main-accent: #D33E0A; /** main accent red orange **/
+	--second-accent: #F65A29; /** brighter red orange **/
+}
+
+/* this flat out doesn't work and I'm tired of it!
+.jumbotron {
+	position: relative;
+	background-image: url("images/leaf-litter.png");
+   width: 100%;
+   height: 100%;
+   background-size: cover;
+   overflow: hidden;
+}
+*/
+/* overwrite bootstrap stuff doesn't work
+@btn-default-border {
+	color: transparent;
+}*/
+p {
+	font-family: 'Shadows Into Light', cursive;
+	text-align: center;
+	font-size: 18px;
+}
+
+.centering-try-again {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.text-box {
+	/* border-bottom: 7px double var(--second-accent);
+	border-top: 7px double var(--second-accent); */
+	font-family: 'Shadows Into Light', cursive;
+	border: 7px double var(--second-accent);
+	opacity: 1 !important;
+	background-color: rgba(132, 119, 52, 0.5);
+}
+.text-show:after {
+	content: "Throw Some Mulch!";
+}
+.theGroup {
+	margin-top: 10px;
+	margin-bottom: 80px;
+	border: none !important;
+}
+.mulchbutton img {
+
+	height: 61px;
+	width: 100px;
+}
+.mulcher p {
+	font-size: 15px;
+	font-weight: normal;
+	text-align: center;
+}
+.player-up {
+	/* background-color: #D32E2E; 
+	border: 4px; */
+}
+.player-down {	
+	
+}
+.player-inactive {	
+	background-color: #746448;
+	/*-webkit-transition: opacity 1s ease-in-out;
+	-moz-transition: opacity 1s ease-in-out;
+	-o-transition: opacity 1s ease-in-out;
+	transition: opacity 1s ease-in-out;*/
+}
+.stats {	
+	font-family: 'Shadows Into Light', cursive;		
+	height: 200px;
+	width: 200px;	
+}
+/* the players */
+
+#tommy img {			
+	height: 200px;
+	width: 200px;
+}
+#sister {
+	display: block;	
+}
+#sister img {		
+	height: 200px;
+	width: 200px;	
+}
+#wrapper {
+	display: block;	
+}
+#wrapper img {		
+	height: 200px;
+	width: 200px;	
+}
+#mushroom {
+	display: block;	
+}
+#mushroom img {			
+	height: 200px;
+	width: 200px;	
+}
