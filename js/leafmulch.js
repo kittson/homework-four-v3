@@ -4,21 +4,25 @@ $(document).ready(function(){
     tommy: {
       healthPoints: 10,
       attackPow: 10,
+      attackPowFactor: 10,
       counterPow: 10                   
     },
     sister: {
       healthPoints: 10,
       attackPow: 30,
+      attackPowFactor: 30,
       counterPow: 10           
     },
     wrapper: {
       healthPoints: 10,
       attackPow: 20,
+      attackPowFactor: 20,
       counterPow: 10           
     },
     mushroom: {
       healthPoints: 10,
       attackPow: 15,
+      attackPowFactor: 15,
       counterPow: 10          
     }
   };
@@ -28,11 +32,7 @@ $(document).ready(function(){
   var newSel;
   var playerCount = 0;
   var message = "Choose Your Player!";
-   
-  //var a = { 
-    //test: { nested: 42 } };[3:36] 
-   // a.test.nested  
-  //var obj = { foo: "bar", baz: 42 };
+  
   //console.log(Object.values(obj)); // ['bar', 42]   
     // music   
     //var robot = new Audio("music/I_am_Robot_and_Proud_Song_for_Two_Wheels.mp3");
@@ -41,48 +41,35 @@ $(document).ready(function(){
     $('.players-message').text(message);
     $('#button').off; //why doesn't this work?
 
-    //console.log(characters.tommy);
-    //console.log("c.t.h " + characters.tommy.healthPoints);
-    //stats = (characters.tommy.healthPoints);
-    //console.log("the stats " + stats);
-
-    /* this doesn't work either */
     $.each(characters, function(key, value){
       switch (key) {
-
-        case 'sister': 
-        console.log('sister');
+        case 'sister':         
         stats = (
           "Health Points:" + characters.sister.healthPoints + "<br>" +
           "Attack Power:" + characters.sister.attackPow + "<br>" +
-          "Counter Power:" + characters.sister.counterPow);
-        
-
-        $('#sister .stats').append(stats);
-        //s$('#sister .stats').append(" got here ");
+          "Counter Power:" + characters.sister.counterPow);        
+        $('#sister .stats').append(stats);        
         break; 
-
         case 'tommy': 
-        console.log('tommy');
-        //console.log('tommy');
-        //stats = $(this).healthPoints;
-        //console.log(Object.values(tommy));
-        //console.log($(this.values);
-        //console.log($(this));
-        //console.log($(this.id));
-        //console.log($(this.healthPoints));
-        $('#tommy .stats').append( 
-          "got here");
+        stats = (
+          "Health Points:" + characters.tommy.healthPoints + "<br>" +
+          "Attack Power:" + characters.tommy.attackPow + "<br>" +
+          "Counter Power:" + characters.tommy.counterPow);        
+        $('#tommy .stats').append(stats);
         break;
-
-
         case 'mushroom': 
-        console.log('mushroom');
-        //$("#mushroom img").attr("src", "images/mushroomPale.png");
+        stats = (
+          "Health Points:" + characters.mushroom.healthPoints + "<br>" +
+          "Attack Power:" + characters.mushroom.attackPow + "<br>" +
+          "Counter Power:" + characters.mushroom.counterPow);        
+        $('#mushroom .stats').append(stats);
         break;
         case 'wrapper': 
-        console.log('wrapper');
-        //$("#wrapper img").attr("src", "images/wrapperPale.png");
+        stats = (
+          "Health Points:" + characters.wrapper.healthPoints + "<br>" +
+          "Attack Power:" + characters.wrapper.attackPow + "<br>" +
+          "Counter Power:" + characters.wrapper.counterPow);        
+        $('#wrapper .stats').append(stats);
         break;
           }//switch key   
         }); 
@@ -95,31 +82,42 @@ $(document).ready(function(){
       }
     }
 
+
     $('.theGroup').on('click', function(e) {
     //console.log(this.id); //the id of element that was clicked on
     //but also the property name of the chars object.    
     $("#char-info").html(characters[this.id].href); 
 
-    //var a = { 
-    //test: { nested: 42 } };[3:36] 
-    // a.test.nested 
-
-    
-
     if (playerCount === 0) {
-      firstPlayPlayer = this.id;
+      playerMe = this.id;
+      console.log(playerMe);
+      //roger help player one class is what moves
       $(this).removeClass("player-up");
       $(this).addClass("player-one");
-      $('.firstPlayer').append(this);      
+      $('.mePlayer').append(this);      
       playerCount = 1;
       message = "Choose your Mulching Opponent!"
-      $('.players-message').text(message);           
+      $('.players-message').text(message);
+      //assign points to player   
+      //why does this work
+      console.log($(characters).find(playerMe).selector);
+      //and why do these not work
+      console.log($(characters).find(playerMe).selector.healthPoints);
+      console.log($(characters).find(playerMe).attr("healthPoints"));
+      console.log($(characters).find(playerMe)['healthPoints']);
+      console.log($(characters).find(playerMe)['healthPoints']);
+      
+      console.log(characters.playerMe);
+      //console.log(characters.playerMe.healthPoints);
+      //console.log(characters."playerMe");
+      //console.log(characters.this.id);
+      
     }
     else if (playerCount === 1) {
-      secondPlayPlayer = this.id;
+      playerThem = this.id;
       console.log()
       $(this).removeClass("player-up");      
-      $('.secondPlayer').append(this);
+      $('.themPlayer').append(this);
       
       playerCount = 55;
       message = "Get Mulching!"
@@ -127,29 +125,27 @@ $(document).ready(function(){
       $("#button").attr("src", "images/mulch200X200text.png");
       
       //this part looks for and blanks out the non-players
+      // need help from Roger here
       $.each(characters, function(key, value){
-        //console.log("the value is " + value);
-        //console.log("the key is " + key);
-        if (key != firstPlayPlayer && key != secondPlayPlayer) {
+        if (key != playerMe && key != playerThem) {
           switch (key) {
-            case 'sister': 
-            //console.log('sister');
+            case 'sister':             
             $("#sister img").attr("src", "images/sisterPale.png");
             break;
             case 'mushroom': 
-            //console.log('mushroom');
             $("#mushroom img").attr("src", "images/mushroomPale.png");
             break;
             case 'tommy': 
-            //console.log('tommy');
             $("#tommy img").attr("src", "images/tommyPale.png");
             break;
             case 'wrapper': 
-            //console.log('wrapper');
             $("#wrapper img").attr("src", "images/wrapperPale.png");
             break;
           }//switch key          
         }//if key
+
+
+
       });//each characters
       
     }//else if
@@ -157,10 +153,15 @@ $(document).ready(function(){
       $('.theGroup').off;
     }//else if
   });
+
+  //get attack power factor of playerMe 
+
+
+
     if ($('.theGroup').off) {
       $('#button').on('click', function() {
-        console.log("clickeroo! ");
-        //get values of attributes of players
+        console.log(" playerMe info " + playerMe);
+
         
 
       });

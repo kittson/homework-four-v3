@@ -1,15 +1,27 @@
 
+Four Players.  
 
-attack power is damage multiplied each "attack"
+You choose Player1 and then "play" against each of the three remaining Players sequentially.  You "play" against the current player until they are out of Health Power points.
+Attack Power grows with each "attack." i.e 
+Attack Power Original = Attack Power at beginning of game.
 
-player 1 has healh points and attack
+Each Player has three types of points:
 
-player 2 has health and counterattack power
+Attack Power
+Health Power
+CounterAttack Power
 
-ist hit 
-player 1 health point - player 2 counterattack
-player 2 health poins - player 1 attack
+Playing against one Player is like this:
+
+Player 1 has Health Power and Attack Power
+Player 2 has Health Power and CounterAttack Power
+
+1st hit (each Player attacks simultaneously, '-' is subtract)
+Player1 Health Power - Player2 CounterAttack Power
+Player2 Health Power - Player1 Attack Power
 
 2nd hit
-player 1 health points - (player 2 counterattack)
-player 2 health points - player 1 attack = (player 1 attack + player 1 original attack)
+Player1 Health Power - (Player2 CounterAttack Power)
+Player2 Health Power - Player1 Attack Power = (Player1 Attack Power + Player1 Attack Power Original)
+
+How many points of the three types should each Player start with to make it possible for each Player to win if chosen as Player1.
