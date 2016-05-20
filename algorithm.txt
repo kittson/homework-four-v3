@@ -1,0 +1,15 @@
+
+
+attack power is damage multiplied each "attack"
+
+player 1 has healh points and attack
+
+player 2 has health and counterattack power
+
+ist hit 
+player 1 health point - player 2 counterattack
+player 2 health poins - player 1 attack
+
+2nd hit
+player 1 health points - (player 2 counterattack)
+player 2 health points - player 1 attack = (player 1 attack + player 1 original attack)

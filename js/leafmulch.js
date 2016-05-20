@@ -28,7 +28,10 @@ $(document).ready(function(){
   var newSel;
   var playerCount = 0;
   var message = "Choose Your Player!";
-  var tommyString = "Tommy Reiner and his Friends";   
+   
+  //var a = { 
+    //test: { nested: 42 } };[3:36] 
+   // a.test.nested  
   //var obj = { foo: "bar", baz: 42 };
   //console.log(Object.values(obj)); // ['bar', 42]   
     // music   
@@ -38,17 +41,27 @@ $(document).ready(function(){
     $('.players-message').text(message);
     $('#button').off; //why doesn't this work?
 
-    /* this doesn't work either
+    //console.log(characters.tommy);
+    //console.log("c.t.h " + characters.tommy.healthPoints);
+    //stats = (characters.tommy.healthPoints);
+    //console.log("the stats " + stats);
+
+    /* this doesn't work either */
     $.each(characters, function(key, value){
       switch (key) {
+
         case 'sister': 
         console.log('sister');
-        //$("#sister img").attr("src", "images/sisterPale.png");
-        break;
-        case 'mushroom': 
-        console.log('mushroom');
-        //$("#mushroom img").attr("src", "images/mushroomPale.png");
-        break;
+        stats = (
+          "Health Points:" + characters.sister.healthPoints + "<br>" +
+          "Attack Power:" + characters.sister.attackPow + "<br>" +
+          "Counter Power:" + characters.sister.counterPow);
+        
+
+        $('#sister .stats').append(stats);
+        //s$('#sister .stats').append(" got here ");
+        break; 
+
         case 'tommy': 
         console.log('tommy');
         //console.log('tommy');
@@ -61,26 +74,43 @@ $(document).ready(function(){
         $('#tommy .stats').append( 
           "got here");
         break;
+
+
+        case 'mushroom': 
+        console.log('mushroom');
+        //$("#mushroom img").attr("src", "images/mushroomPale.png");
+        break;
         case 'wrapper': 
         console.log('wrapper');
         //$("#wrapper img").attr("src", "images/wrapperPale.png");
         break;
           }//switch key   
         }); 
-    */
+    /**/
+    
+    function gatherStats(character) {
+      var ttt;
+      for (var i = Things.length - 1; i >= 0; i--) {
+        Things[i]
+      }
+    }
 
     $('.theGroup').on('click', function(e) {
     //console.log(this.id); //the id of element that was clicked on
     //but also the property name of the chars object.    
-    $("#char-info").html(characters[this.id].href);  
+    $("#char-info").html(characters[this.id].href); 
+
+    //var a = { 
+    //test: { nested: 42 } };[3:36] 
+    // a.test.nested 
+
+    
 
     if (playerCount === 0) {
       firstPlayPlayer = this.id;
       $(this).removeClass("player-up");
       $(this).addClass("player-one");
-      $('.firstPlayer').append(this);
-      console.log($('.firstPlayer[]'));
-      //$(this).addClass("player-down");
+      $('.firstPlayer').append(this);      
       playerCount = 1;
       message = "Choose your Mulching Opponent!"
       $('.players-message').text(message);           
@@ -98,24 +128,24 @@ $(document).ready(function(){
       
       //this part looks for and blanks out the non-players
       $.each(characters, function(key, value){
-        console.log("the value is " + value);
-        console.log("the key is " + key);
+        //console.log("the value is " + value);
+        //console.log("the key is " + key);
         if (key != firstPlayPlayer && key != secondPlayPlayer) {
           switch (key) {
             case 'sister': 
-            console.log('sister');
+            //console.log('sister');
             $("#sister img").attr("src", "images/sisterPale.png");
             break;
             case 'mushroom': 
-            console.log('mushroom');
+            //console.log('mushroom');
             $("#mushroom img").attr("src", "images/mushroomPale.png");
             break;
             case 'tommy': 
-            console.log('tommy');
+            //console.log('tommy');
             $("#tommy img").attr("src", "images/tommyPale.png");
             break;
             case 'wrapper': 
-            console.log('wrapper');
+            //console.log('wrapper');
             $("#wrapper img").attr("src", "images/wrapperPale.png");
             break;
           }//switch key          
@@ -131,7 +161,7 @@ $(document).ready(function(){
       $('#button').on('click', function() {
         console.log("clickeroo! ");
         //get values of attributes of players
-
+        
 
       });
     }//if group off

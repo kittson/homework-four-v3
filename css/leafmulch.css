@@ -71,11 +71,14 @@ p {
 }
 .stats {	
 	font-family: 'Shadows Into Light', cursive;		
+	font-size: 15px;
 	height: 200px;
 	width: 200px;	
 }
 /* the players */
-
+#tommy {
+	display: block;	
+}
 #tommy img {			
 	height: 200px;
 	width: 200px;
