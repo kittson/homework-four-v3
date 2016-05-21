@@ -48,10 +48,17 @@ var playerThem;
     return [players[player1].healthPnts, players[player2].healthPnts]; 
 };
 
-function updateHealthStatsDisplay (player, pts){
+function updateHealthStatsDisplay (player){
   //console.log("player and points " + player + pts);
-  statsPlayer = (
-    "Health Points:" + players[player].pts + "<br>");
+  //statsPlayer = (
+    //"Health Points:" + players[player].pts + "<br>");
+    //replace just the health points, not the whole thing
+    //$('#' + player + ' .stats').html(statsPlayer);
+    stats = (
+      "Health Points:" + players[player].pts + "<br>" +
+      "Attack Power:" + players[player]attackPowFactor + "<br>" +
+      "Counter Power:" + players[player]counterPow);
+    console.log(player.stats);
 
   //console.log($(players).find(playerThem).selector);
   //console.log("a div? " + players[playerThem]('div'));    
@@ -80,10 +87,10 @@ $(document).ready(function(){
 
   var message = "Choose Your Player!";   
   $('.players-message').text(message);
-    tmp = "sis";
     $.each(players, function(key, value){
       switch (key) {
-        case 'sis':         
+        case 'sis':  
+        tmp = "sis";       
         stats = (
           
           "Health Points:" + players.sis.healthPnts + "<br>" +
@@ -185,7 +192,8 @@ $(document).ready(function(){
                 $('.players-message').text(message);
                 //need big help here 
                 // to find the div of the losing player
-                
+                $('#' + playerThem + ' img').attr('src', 'images/' + playerThem +'X.png');
+                //$('#' + player + ' .stats').append(stats);
                 //console.log($(players).find(playerThem).selector); 
                 //console.log($(players).find(playerThem));
 
