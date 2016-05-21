@@ -26,7 +26,7 @@ Player2 Health Power - Player1 Attack Power = (Player1 Attack Power + Player1 At
 
 How many points of the three types should each Player start with to make it possible for each Player to win if chosen as Player1.
 
-notes from console
+notes from console and roger
 
 characters
 Object {tommy: Object, sister: Object, wrapper: Object, mushroom: Object}

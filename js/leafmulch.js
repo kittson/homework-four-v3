@@ -1,220 +1,198 @@
-var characters = {
-    tommy: {
-      healthPoints: 10,
-      attackPow: 10,
-      attackPowFactor: 0,
-      counterPow: 10                   
-    },
-    sister: {
-      healthPoints: 10,
-      attackPow: 30,
-      attackPowFactor: 0,
-      counterPow: 30           
-    },
-    wrapper: {
-      healthPoints: 10,
-      attackPow: 20,
-      attackPowFactor: 0,
-      counterPow: 20           
-    },
-    mushroom: {
-      healthPoints: 10,
-      attackPow: 15,
-      attackPowFactor: 0,
-      counterPow: 15          
-    }
-  };
+// js file for leafmulch game, homework assignment #4
 
+var players = {
+  tommy: {
+    healthPnts: 10,
+    attackPow: 0,
+    attackPowFactor: 10,
+    counterPow: 10                   
+  },
+  sis: {
+    healthPnts: 50,
+    attackPow: 0,
+    attackPowFactor: 30,
+    counterPow: 30           
+  },
+  wrapper: {
+    healthPnts: 10,
+    attackPow: 0,
+    attackPowFactor: 20,
+    counterPow: 20           
+  },
+  shroom: {
+    healthPnts: 10,
+    attackPow: 0,
+    attackPowFactor: 15,
+    counterPow: 15          
+  }
+};
+var charsNotInPlay;
+var tmp;
+var stats;
+var newSel;
+var playerCount = 0;
+var thePoints;
+var playerMe;
+var playerThem;
+
+ function makeAPlay (player1, player2) {
+    //player1 = playerMe, player2 = playerThem
+    //player1 attack power increases by original attack power
+    players[player1].attackPow =  players[player1].attackPow + players[player1].attackPowFactor; 
+    console.log("new attack power " + players[player1].attackPow);
+    //player1 health debits by player 2 counter attack power
+    players[player1].healthPnts = players[player1].healthPnts - players[player2].counterPow;
+    //player2 health debits by player 1 attack power
+    players[player2].healthPnts = players[player2].healthPnts - players[player1].attackPow; 
+    console.log("p1 and p2 health " + players[player1].healthPnts + " " + players[player2].healthPnts); 
+    return [players[player1].healthPnts, players[player2].healthPnts]; 
+};
+
+function updateHealthStatsDisplay (player, pts){
+  //console.log("player and points " + player + pts);
+  statsPlayer = (
+    "Health Points:" + players[player].pts + "<br>");
+
+  //console.log($(players).find(playerThem).selector);
+  //console.log("a div? " + players[playerThem]('div'));    
+        //$('#sis .stats').append(stats); 
+    //$("'#' + player + .stats").append(statsPlayer); 
+    //row = $('#' + row_id);
+    //need big help here            
+    //return(statsPlayer);
+
+    //var divChoice = $(players).find(player).selector; 
+    //var divSign = "'#";
+    //var statsEnd = " .stats'";
+    //var cattedString = divSign.concat(divChoice, statsEnd);
+    //console.log("string " + cattedString);
+
+    //$(cattedString).append(stats);
+    //var str1 = "Hello ";
+    //var str2 = "world!";
+    //var res = str1.concat(str2);
+    //console.log("player from find " + $(players).find(player).selector); 
+    //console.log("player from update health " + player);         
+}
+
+//start program
 $(document).ready(function(){
-  var charsNotInPlay;
-  var tmp;
-  var stats;
-  var newSel;
-  var playerCount = 0;
-  var message = "Choose Your Player!";
-  
-  //console.log(Object.values(obj)); // ['bar', 42]   
-    // music   
-    //var robot = new Audio("music/I_am_Robot_and_Proud_Song_for_Two_Wheels.mp3");
-    //robot.play();
 
-    $('.players-message').text(message);
-    $('#button').off; //why doesn't this work?
-
-    $.each(characters, function(key, value){
+  var message = "Choose Your Player!";   
+  $('.players-message').text(message);
+    tmp = "sis";
+    $.each(players, function(key, value){
       switch (key) {
-        case 'sister':         
+        case 'sis':         
         stats = (
-          "Health Points:" + characters.sister.healthPoints + "<br>" +
-          "Attack Power:" + characters.sister.attackPow + "<br>" +
-          "Counter Power:" + characters.sister.counterPow);        
-        $('#sister .stats').append(stats);        
+          
+          "Health Points:" + players.sis.healthPnts + "<br>" +
+          "Attack Power:" + players.sis.attackPowFactor + "<br>" +
+          "Counter Power:" + players.sis.counterPow);        
+        //$('#sis .stats').append(stats);   
+        //$('#' + elementId + '.control-menu');
+        //magic!   yay
+        $('#' + tmp + ' .stats').append(stats);     
         break; 
         case 'tommy': 
         stats = (
-          "Health Points:" + characters.tommy.healthPoints + "<br>" +
-          "Attack Power:" + characters.tommy.attackPow + "<br>" +
-          "Counter Power:" + characters.tommy.counterPow);        
+          "Health Points:" + players.tommy.healthPnts + "<br>" +
+          "Attack Power:" + players.tommy.attackPowFactor + "<br>" +
+          "Counter Power:" + players.tommy.counterPow);        
         $('#tommy .stats').append(stats);
         break;
-        case 'mushroom': 
+        case 'shroom': 
         stats = (
-          "Health Points:" + characters.mushroom.healthPoints + "<br>" +
-          "Attack Power:" + characters.mushroom.attackPow + "<br>" +
-          "Counter Power:" + characters.mushroom.counterPow);        
-        $('#mushroom .stats').append(stats);
+          "Health Points:" + players.shroom.healthPnts + "<br>" +
+          "Attack Power:" + players.shroom.attackPowFactor + "<br>" +
+          "Counter Power:" + players.shroom.counterPow);        
+        $('#shroom .stats').append(stats);
         break;
         case 'wrapper': 
         stats = (
-          "Health Points:" + characters.wrapper.healthPoints + "<br>" +
-          "Attack Power:" + characters.wrapper.attackPow + "<br>" +
-          "Counter Power:" + characters.wrapper.counterPow);        
+          "Health Points:" + players.wrapper.healthPnts + "<br>" +
+          "Attack Power:" + players.wrapper.attackPowFactor + "<br>" +
+          "Counter Power:" + players.wrapper.counterPow);        
         $('#wrapper .stats').append(stats);
         break;
           }//switch key   
         }); 
-    /**/
-    
-    function gatherStats(character) {
-      var ttt;
-      for (var i = Things.length - 1; i >= 0; i--) {
-        Things[i]
-      }
-    }
-
 
     $('.theGroup').on('click', function(e) {
     //console.log(this.id); //the id of element that was clicked on
     //but also the property name of the chars object.    
-    $("#char-info").html(characters[this.id].href); 
+    //$("#char-info").html(players[this.id].href); 
 
-    if (playerCount === 0) {
-      playerMe = this.id;
-      console.log(playerMe);
-      //roger help player one class is what moves
-      $(this).removeClass("player-up");
-      $(this).addClass("player-one");
-      $('.mePlayer').append(this);      
-      playerCount = 1;
-      message = "Choose your Mulching Opponent!"
-      $('.players-message').text(message);
-      //assign points to player   
-      //why does this work
-      console.log($(characters).find(playerMe).selector);
-      //and why do these not work
-
-      
-      console.log($(characters).find(playerMe).selector.healthPoints);
-      console.log($(characters).find(playerMe).attr("healthPoints"));
-      console.log($(characters).find(playerMe)['healthPoints']);
-      console.log($(characters).find(playerMe)['healthPoints']);
-      
-      console.log(characters.playerMe);
-      //console.log(characters.playerMe.healthPoints);
-      //console.log(characters."playerMe");
-      //console.log(characters.this.id);
-
-
-      //playerMe.attackPow = playerMe.attackPow + playerMe.attackPowFactor;
-      //playerMe.healthPoints = playerMe.healthPoints - playerThem.counterPow;
-      //playerThem.healthPoints = playerThemHealthPoints - playerMe.attackPow;
-    }
-    else if (playerCount === 1) {
-      playerThem = this.id;
-      console.log()
-      $(this).removeClass("player-up");      
-      $('.themPlayer').append(this);
-      
-      playerCount = 55;
-      message = "Get Mulching!"
-      $('.players-message').text(message);
-      $("#button").attr("src", "images/mulch200X200text.png");
-      
-      //this part looks for and blanks out the non-players
-      // need help from Roger here
-      $.each(characters, function(key, value){
-        if (key != playerMe && key != playerThem) {
-          switch (key) {
-            case 'sister':             
-            $("#sister img").attr("src", "images/sisterPale.png");
-            break;
-            case 'mushroom': 
-            $("#mushroom img").attr("src", "images/mushroomPale.png");
-            break;
-            case 'tommy': 
-            $("#tommy img").attr("src", "images/tommyPale.png");
-            break;
-            case 'wrapper': 
-            $("#wrapper img").attr("src", "images/wrapperPale.png");
-            break;
-          }//switch key          
-        }//if key
-
-
-
-      });//each characters
-      
-    }//else if
-    else if (playerCount === 55) {
-      $('.theGroup').off;
-    }//else if
-  });
-
-  //get attack power factor of playerMe 
-
-
-
-    if ($('.theGroup').off) {
-      $('#button').on('click', function() {
-        console.log(" playerMe info " + playerMe);
-
+      if (playerCount === 0) {
+        playerMe = this.id;        
+        //change class to move photo
+        $(this).removeClass("player-up");
+        $(this).addClass("player-one");
+        $('.playerMe').append(this);      
+        playerCount = 1;
+        message = "Choose your Mulching Opponent!"
+        $('.players-message').text(message);  
+        //console.log($(players).find(playerMe).selector);      
+      }
+      else if (playerCount === 1) {
+        playerThem = this.id;
+        console.log()
+        $(this).removeClass("player-up");      
+        $('.playerThem').append(this);
         
+        playerCount = 55;
+        message = "Get Mulching!"
+        $('.players-message').text(message);
+        $("#button").attr("src", "images/mulch200X200text.png");
+        
+        //this part looks for and blanks out the non-players      
+        $.each(players, function(key, value){
+          if (key != playerMe && key != playerThem) {
+            switch (key) {
+              case 'sis':             
+              $("#sis img").attr("src", "images/sisPale.png");
+              break;
+              case 'shroom': 
+              $("#shroom img").attr("src", "images/shroomPale.png");
+              break;
+              case 'tommy': 
+              $("#tommy img").attr("src", "images/tommyPale.png");
+              break;
+              case 'wrapper': 
+              $("#wrapper img").attr("src", "images/wrapperPale.png");
+              break;
+            }//switch key          
+          }//if key
+        });//each players      
+      }//else if
+      else if (playerCount === 55) {
+        $('.theGroup').off;
+      }//else if
+    });
+      // this is the play button
+      if ($('.theGroup').off) {
+        $('#button').on('click', function() {
+            thePoints = makeAPlay(playerMe, playerThem);            
+            updateHealthStatsDisplay(playerMe, thePoints[0]);
+            updateHealthStatsDisplay(playerThem, thePoints[1]);
+              if ( thePoints[0] <= 0)  {
+                console.log("zeroed out");
+                message = "Play Over! You're Overmulched!"
+                $('.players-message').text(message);          
+              }//if
+              else if ( thePoints[1] <= 0){
+                message = "Play Over! You Mulched your Opponent!"
+                $('.players-message').text(message);
+                //need big help here 
+                // to find the div of the losing player
+                
+                //console.log($(players).find(playerThem).selector); 
+                //console.log($(players).find(playerThem));
 
-      });
-    }//if group off
-
-  /*
-
-  $('#player').on('click', function() {    
-          var characterBoxId = this.id;
-          console.log("characterBoxId " + characterBoxId);
-          console.log("characterBoxId with power " + players[characterBoxId]);
-          console.log("this with $ " + $(this));
-          console.log("this alone " + (this));
-  $('.status-message').text(message);
-  $('#player').on('click', function() {    
-          var characterBoxId = this.id;
-          console.log("charbox alone " + players);
-          console.log("the this " + $(this));
-          console.log(" this " + (this));
-          console.log("charbox from players " + players[characterBoxId]);
-          console.log(this);            
-      if ( playerCount === 0) {                    
-          playerCount = 1;
-          console.log("player set to " + playerCount);
-          message = "Choose your Mulching Foe!";
-          $('.status-message').text(message);
-          $(".player-up").animate({top:"-=200px"}, "normal");
-      }
-      else if ( playerCount === 1) {
-          message = "Get Ready to Mulch!";
-          $('.status-message').text(message);
-      }
-    }) */
-
-     // $('#tommy').on('click', function() {    
-      //    var characterBoxId = this.id;
-      //    console.log(players[characterBoxId].attackPow)        
-     // })
-
-
-  //$('.btn').on('click', function() {
-      //console.log($(this).attr("value"));   
-  //});
-
-
-
-});
+              }//else if
+          });        
+      }//if group off             
+});//document ready
 
 
 

@@ -41,26 +41,20 @@ p {
 	content: "Throw Some Mulch!";
 }
 .theGroup {
-	margin-top: 10px;
-	margin-bottom: 80px;
+	margin-top: 20px;
+	margin-bottom: 10px;
 	border: none !important;
 }
-.mulchbutton img {
-
-	height: 61px;
-	width: 100px;
+.actionArea {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border: none !important;
 }
-.mulcher p {
-	font-size: 15px;
-	font-weight: normal;
-	text-align: center;
+.player-up {	
 }
-.player-up {
-	/* background-color: #D32E2E; 
-	border: 4px; */
+.player-down {		
 }
-.player-down {	
-	
+.players-message {		
 }
 .player-inactive {	
 	background-color: #746448;
@@ -69,40 +63,41 @@ p {
 	-o-transition: opacity 1s ease-in-out;
 	transition: opacity 1s ease-in-out;*/
 }
-.stats {	
-	font-family: 'Shadows Into Light', cursive;		
-	font-size: 15px;
-	height: 200px;
-	width: 200px;
+.stats  {	
+	font-family: 'Shadows Into Light', cursive;			
 	text-align: center;
-	margin-left: 20px;	
+	margin-left: 20px;
+	margin-bottom: 0px;	
+}
+.stats p {
+	font-size: 10px;
 }
 /* the players */
 #tommy {
 	display: block;	
 }
 #tommy img {			
-	height: 200px;
-	width: 200px;
+/*	height: 200px;
+	width: 200px; */
 }
-#sister {
+#sis {
 	display: block;	
 }
-#sister img {		
-	height: 200px;
-	width: 200px;	
+#sis img {		
+/*	height: 200px;
+	width: 200px;	*/
 }
 #wrapper {
 	display: block;	
 }
 #wrapper img {		
-	height: 200px;
-	width: 200px;	
+/*	height: 200px;
+	width: 200px;	*/
 }
-#mushroom {
+#shroom {
 	display: block;	
 }
-#mushroom img {			
-	height: 200px;
-	width: 200px;	
+#shroom img {			
+/*	height: 200px;
+	width: 200px;	*/
 }
