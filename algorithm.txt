@@ -25,3 +25,19 @@ Player1 Health Power - (Player2 CounterAttack Power)
 Player2 Health Power - Player1 Attack Power = (Player1 Attack Power + Player1 Attack Power Original)
 
 How many points of the three types should each Player start with to make it possible for each Player to win if chosen as Player1.
+
+notes from console
+
+characters
+Object {tommy: Object, sister: Object, wrapper: Object, mushroom: Object}
+characters.tommy
+Object {healthPoints: 10, attackPow: 10, attackPowFactor: 0, counterPow: 10}
+characters.playerMe
+undefined
+playerMe
+"tommy"
+characters[playerM]
+VM692:1 Uncaught ReferenceError: playerM is not defined(…)(anonymous function) @ VM692:1InjectedScript._evaluateOn @ (program):145InjectedScript._evaluateAndWrap @ (program):137InjectedScript.evaluate @ (program):118
+characters[playerMe]
+Object {healthPoints: 10, attackPow: 10, attackPowFactor: 0, counterPow: 10}
+3leafmulch.js:167  playerMe info tommy

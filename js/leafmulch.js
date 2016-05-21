@@ -1,31 +1,31 @@
-$(document).ready(function(){
-
-  var characters = {
+var characters = {
     tommy: {
       healthPoints: 10,
       attackPow: 10,
-      attackPowFactor: 10,
+      attackPowFactor: 0,
       counterPow: 10                   
     },
     sister: {
       healthPoints: 10,
       attackPow: 30,
-      attackPowFactor: 30,
-      counterPow: 10           
+      attackPowFactor: 0,
+      counterPow: 30           
     },
     wrapper: {
       healthPoints: 10,
       attackPow: 20,
-      attackPowFactor: 20,
-      counterPow: 10           
+      attackPowFactor: 0,
+      counterPow: 20           
     },
     mushroom: {
       healthPoints: 10,
       attackPow: 15,
-      attackPowFactor: 15,
-      counterPow: 10          
+      attackPowFactor: 0,
+      counterPow: 15          
     }
   };
+
+$(document).ready(function(){
   var charsNotInPlay;
   var tmp;
   var stats;
@@ -102,6 +102,8 @@ $(document).ready(function(){
       //why does this work
       console.log($(characters).find(playerMe).selector);
       //and why do these not work
+
+      
       console.log($(characters).find(playerMe).selector.healthPoints);
       console.log($(characters).find(playerMe).attr("healthPoints"));
       console.log($(characters).find(playerMe)['healthPoints']);
@@ -111,7 +113,11 @@ $(document).ready(function(){
       //console.log(characters.playerMe.healthPoints);
       //console.log(characters."playerMe");
       //console.log(characters.this.id);
-      
+
+
+      //playerMe.attackPow = playerMe.attackPow + playerMe.attackPowFactor;
+      //playerMe.healthPoints = playerMe.healthPoints - playerThem.counterPow;
+      //playerThem.healthPoints = playerThemHealthPoints - playerMe.attackPow;
     }
     else if (playerCount === 1) {
       playerThem = this.id;
