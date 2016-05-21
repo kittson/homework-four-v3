@@ -48,21 +48,39 @@ var playerThem;
     return [players[player1].healthPnts, players[player2].healthPnts]; 
 };
 
-/* function updateHealthStatsDisplay (player, pts){
-  console.log("player and points " + player + pts);
-  statsPlayer = (
-    "Health Points:" + players[player].pts + "<br>");
+function updateHealthStatsDisplay (player){
+  //console.log("player and points " + player + pts);
+  //statsPlayer = (
+    //"Health Points:" + players[player].pts + "<br>");
     //replace just the health points, not the whole thing
-    $('#' + player + ' .stats').html(statsPlayer);
-    
-    /*var statsInner = (
+    //$('#' + player + ' .stats').html(statsPlayer);
+    stats = (
       "Health Points:" + players[player].pts + "<br>" +
-      "Attack Power:" + players[player]attackPowFactor + "<br> Counter Power:" + 
-      players[player]counterPow); */
+      "Attack Power:" + players[player]attackPowFactor + "<br>" +
+      "Counter Power:" + players[player]counterPow);
+    console.log(player.stats);
 
-/*    $('#' + player + ' .stats').html(statsInner);
-    console.log(player.statsInner);        
-} */
+  //console.log($(players).find(playerThem).selector);
+  //console.log("a div? " + players[playerThem]('div'));    
+        //$('#sis .stats').append(stats); 
+    //$("'#' + player + .stats").append(statsPlayer); 
+    //row = $('#' + row_id);
+    //need big help here            
+    //return(statsPlayer);
+
+    //var divChoice = $(players).find(player).selector; 
+    //var divSign = "'#";
+    //var statsEnd = " .stats'";
+    //var cattedString = divSign.concat(divChoice, statsEnd);
+    //console.log("string " + cattedString);
+
+    //$(cattedString).append(stats);
+    //var str1 = "Hello ";
+    //var str2 = "world!";
+    //var res = str1.concat(str2);
+    //console.log("player from find " + $(players).find(player).selector); 
+    //console.log("player from update health " + player);         
+}
 
 //start program
 $(document).ready(function(){
@@ -108,6 +126,9 @@ $(document).ready(function(){
         }); 
 
     $('.theGroup').on('click', function(e) {
+    //console.log(this.id); //the id of element that was clicked on
+    //but also the property name of the chars object.    
+    //$("#char-info").html(players[this.id].href); 
 
       if (playerCount === 0) {
         playerMe = this.id;        
@@ -159,19 +180,8 @@ $(document).ready(function(){
       if ($('.theGroup').off) {
         $('#button').on('click', function() {
             thePoints = makeAPlay(playerMe, playerThem);            
-            //players[playerMe].healthPnts = thePoints[0];
-            //players[playerThem].healthPnts = thePoints[1];
-            //hP = players.playerMe.thePoints[0];
-            //aP = players.playerMe.attackPowFactor;
-            console.log(players.playerMe.healthPnts);
-           /* $('#' + playerMe + ' .stats').html(                      
-          "Health Points:" + players.playerMe.healthPnts + "<br>" +
-          "Attack Power:" + players.playerMe.attackPowFactor + "<br>" +
-          "Counter Power:" + players.playerMe.counterPow); */
-
-            $('#' + playerThem + ' .stats').html(thePoints[1]);
-
-
+            updateHealthStatsDisplay(playerMe, thePoints[0]);
+            updateHealthStatsDisplay(playerThem, thePoints[1]);
               if ( thePoints[0] <= 0)  {
                 console.log("zeroed out");
                 message = "Play Over! You're Overmulched!"
@@ -180,7 +190,8 @@ $(document).ready(function(){
               else if ( thePoints[1] <= 0){
                 message = "Play Over! You Mulched your Opponent!"
                 $('.players-message').text(message);
-                
+                //need big help here 
+                // to find the div of the losing player
                 $('#' + playerThem + ' img').attr('src', 'images/' + playerThem +'X.png');
                 //$('#' + player + ' .stats').append(stats);
                 //console.log($(players).find(playerThem).selector); 
