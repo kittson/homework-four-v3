@@ -159,16 +159,13 @@ $(document).ready(function(){
       if ($('.theGroup').off) {
         $('#button').on('click', function() {
             thePoints = makeAPlay(playerMe, playerThem);            
-            //players[playerMe].healthPnts = thePoints[0];
-            //players[playerThem].healthPnts = thePoints[1];
-            //hP = players.playerMe.thePoints[0];
-            //aP = players.playerMe.attackPowFactor;
-            console.log(players.playerMe.healthPnts);
+            // why don't these work?  Cannot update stats correctly.
+            //console.log(playerMe.thePoints[0]);
            /* $('#' + playerMe + ' .stats').html(                      
           "Health Points:" + players.playerMe.healthPnts + "<br>" +
           "Attack Power:" + players.playerMe.attackPowFactor + "<br>" +
           "Counter Power:" + players.playerMe.counterPow); */
-
+            $('#' + playerMe + ' .stats').html(thePoints[0]);
             $('#' + playerThem + ' .stats').html(thePoints[1]);
 
 
